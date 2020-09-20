@@ -39,25 +39,25 @@ public class Oblig1 {
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
 
-        for(int i=1;i<a.length;i++)
-        {
-// Unsorted pair found
-            if (a[i - 1] > a[i])
-            {
-                throw new IllegalStateException("Not sorted");
-            }
+        if (a.length==0){
+            return 0;
         }
 
-        for(int i=0;i<a.length;i++)
+
+
+        // Sjekk usortert array
+        for(int i=1;i<a.length;i++)
         {
-            if(a[i]==0)
-                return 0;
+            if (a[i - 1] > a[i])
+            {
+                throw new IllegalStateException("Ikke sortert");
+            }
         }
 
 
         int res = 1;
 
-        // Pick all elements one by one
+        // Velger hver element
         for (int i = 1; i < a.length; i++)
         {
             int j = 0;
@@ -65,19 +65,41 @@ public class Oblig1 {
                 if (a[i] == a[j])
                     break;
 
-            // If not printed earlier,
-            // then print it
             if (i == j)
                 res++;
         }
+
+
         return res;
-
-
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+
+        if (a.length==0){
+            return 0;
+        }
+
+
+
+
+        int res = 1;
+
+        // Velger hver element
+        for (int i = 1; i < a.length; i++)
+        {
+            int j;
+            for (j = 0; j < i; j++)
+                if (a[i] == a[j])
+                    break;
+
+            if (i == j)
+                res++;
+        }
+
+
+        return res;
+
     }
 
     ///// Oppgave 4 //////////////////////////////////////
